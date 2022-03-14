@@ -1,0 +1,26 @@
+{
+  "name": "node-class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "firstClass.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "ejs": "^2.6.1",
+    "expess": "0.0.1-security",
+    "express": "^4.17.2",
+    "express-handlebars": "^3.0.2",
+    "mysql2": "^2.3.3",
+    "pug": "^3.0.2",
+    "sequelize": "^6.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
