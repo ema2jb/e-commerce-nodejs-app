@@ -151,13 +151,19 @@ exports.postDeleteCartProduct = (req,res)=>{
 
 
 exports.getOrders =(req, res, next)=>{
-    res.render("shop/orders", {
-        pageTitle:"/orders"
-    })
+    req.user.getOrders({include: ['products']})
+    .then(orders=>{
+        res.render("shop/orders", {
+            pageTitle:"/orders",
+            orders:orders
+        })
+    }).catch(err=>console.log(err))    
 }
 
 exports.postOrder = (req, res, next)=>{
+    let fetchedCart;
     req.user.getCart().then(cart=>{
+        fetchedCart = cart
         return cart.getProducts()
     }).then(products=>{
         return req.user.createOrder().then(order=>{
@@ -165,6 +171,8 @@ exports.postOrder = (req, res, next)=>{
                 product.orderItem = { quantity: product.cartItem.quantity}
                 return product
             })).then(results=>{
+                return fetchedCart.setProducts(null)
+            }).then(result=>{
                 res.redirect('/orders')
             })
         }).catch(err=>console.log(err))
