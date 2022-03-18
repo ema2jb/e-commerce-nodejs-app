@@ -19,16 +19,19 @@ router.get('/products', getProducts)
 
 router.get('/product/:productId', getProduct)
 
-router.get('/cart', getCart)
-
 router.post('/cart', postCart)
 
-router.get('/orders', getOrders)
-
-router.get('/checkout', getCheckout)
+router.get('/cart', getCart)
 
 router.post('/cart-delete-item', postDeleteCartProduct)
 
 router.post('/create-order', postOrder)
+
+router.get('/orders', getOrders)
+/*
+router.get('/checkout', getCheckout)
+*/
+
+
 
 module.exports = router
